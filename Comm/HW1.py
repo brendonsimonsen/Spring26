@@ -10,10 +10,9 @@ from scipy import signal
 
 def main():
     #question7()
-    question8()
+    #question8()
     #question9()
-    #question12()
-    #q12b()
+    q12b()
     pass
 
 def q12b():
@@ -33,11 +32,6 @@ def q12b():
     
     x = np.zeros(N)
     x[:high_samples] = 1.0    # 1 for first 25%, 0 otherwise
-    
-    # (optional) repeat a few periods so filtering looks nicer
-    periods = 5
-    x = np.tile(x, periods)
-    t = np.arange(len(x)) * Ts
     
     # filter params
     R = 1.0
@@ -59,13 +53,20 @@ def q12b():
     x1 = x[:Nplot]
     y1 = y[:Nplot]
     
+    n1 = np.arange(Nplot)
+    
     # -----------------------
     # Plot (both as stem plots)
     # -----------------------
     plt.figure(figsize=(8,4))
 
-    m1, s1, b1 = plt.stem(t1*1e3, x1, basefmt=" ", label="Input x[n]")
-    m2, s2, b2 = plt.stem(t1*1e3, y1, basefmt=" ", label="Filtered y[n]")
+    # plot using time
+    #m1, s1, b1 = plt.stem(t1*1e3, x1, basefmt=" ", label="Input x[n]")
+    #m2, s2, b2 = plt.stem(t1*1e3, y1, basefmt=" ", label="Filtered y[n]")
+    
+    # plot using nodes
+    m1, s1, b1 = plt.stem(n1, x1, basefmt=" ", label="Input x[n]")
+    m2, s2, b2 = plt.stem(n1, y1, basefmt=" ", label="Filtered y[n]")
     
     # Change color of second stem plot
     plt.setp(m2, color='red')
@@ -152,7 +153,7 @@ def question9():
     plt.semilogx(f, H_dB)
     plt.xlabel("Frequency (Hz)")
     plt.ylabel("Magnitude |H(f)| (dB)")
-    plt.title("Q9 Amplitude Response |A_dB(f)|")
+    plt.title("Q9 Amplitude Response |$A_{dB}(f)|$")
     plt.grid(True, which="both")
     plt.show()
     
