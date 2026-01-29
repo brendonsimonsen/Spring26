@@ -45,7 +45,7 @@ def p3():
     
     delta_vout = vout_plus_2 - vout
     
-    sensitivity = delta_vout * 350 / 2
+    sensitivity = delta_vout * orig_r / 2
     
     k = np.array([1.006,1.26,1.58,2,2.51,3.16,3.98,5.01,6.31,9.997])
     
@@ -54,7 +54,7 @@ def p3():
     plt.plot(k, sensitivity, marker='o', linestyle='-', color='blue', label='Sensitivity')
     
     plt.xlabel('Bridge Ratio K')
-    plt.ylabel('Sensitivity [V/V]')
+    plt.ylabel('Sensitivity')
     plt.title('Quarter Bridge Sensitivity')
     plt.xscale('log')
     plt.grid(True, which="both", ls="--")
