@@ -36,6 +36,7 @@ def p3a():
     plt.show()
     
 def p3():
+    k = np.array([1.006,1.26,1.58,2,2.51,3.16,3.98,5.01,6.31,9.997])
     orig_r = np.array([350,441,553,700,879,1106,1393,1754,2209,3497])
     r_plus_2 = orig_r + 2
     r0 = 350 
@@ -45,9 +46,9 @@ def p3():
     
     delta_vout = vout_plus_2 - vout
     
-    sensitivity = delta_vout * orig_r / 2
-    
-    k = np.array([1.006,1.26,1.58,2,2.51,3.16,3.98,5.01,6.31,9.997])
+    # multiply by orig_r to normalize
+    # sensitivity = delta_vout / delta_r 
+    sensitivity = delta_vout * orig_r / 2   
     
     # plot
     plt.figure(figsize=(8,5))
