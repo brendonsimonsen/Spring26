@@ -15,12 +15,12 @@ def main():
     pass
 
 def p4():
-    fs = 200_000        # sampling rate
+    fs = 200e3        # sampling rate
     T = 5e-3
     t = np.arange(0, T, 1/fs)
     
-    fm = 1_000          # message frequency
-    fc = 10_000         # carrier frequency
+    fm = 1e3          # message frequency
+    fc = 10e3        # carrier frequency
     
     # m(t)
     m = np.cos(2*np.pi*fm*t)
@@ -32,35 +32,49 @@ def p4():
     c = np.cos(2*np.pi*fc*t)
     s = np.sin(2*np.pi*fc*t)
     
-    x_ssb = m*c - m_hilbert*s       # Upper sideband
+    # upper sideband 
+    x_ssb = m*c - m_hilbert*s
     
+    # lower sideband (LSB)
+    x_lsb = m*c + m_hilbert*s
+        
     # time-domain plot
     plt.figure(figsize=(10,4))
-    plt.plot(t*1e3, x_ssb)
+    plt.plot(t*1e3, x_ssb, label="Upper sideband (USB)")
+    plt.plot(t*1e3, x_lsb, label="Lower sideband (LSB)")
     plt.xlim(0, 0.5)
     plt.xlabel("Time (ms)")
     plt.title("SSB Band-pass Signal (Time Domain)")
     plt.grid()
+    plt.legend()
     plt.show()
     
-    # frequency-domaion plot
+    # frequency-domain plot (USB and LSB on same axes)
+
     N = len(x_ssb)
-    X = np.fft.fftshift(np.fft.fft(x_ssb))
+    
+    X_usb = np.fft.fftshift(np.fft.fft(x_ssb))
+    X_lsb = np.fft.fftshift(np.fft.fft(x_lsb))
+    
     f = np.fft.fftshift(np.fft.fftfreq(N, 1/fs))
     
     plt.figure(figsize=(10,4))
-    plt.plot(f/1000, 20*np.log10(np.abs(X)+1e-12))
+    plt.plot(f/1000, 20*np.log10(np.abs(X_usb) + 1e-12),
+             label="Upper sideband (USB)")
+    plt.plot(f/1000, 20*np.log10(np.abs(X_lsb) + 1e-12),
+             label="Lower sideband (LSB)")
     plt.xlim(6, 14)
     plt.xlabel("Frequency (kHz)")
     plt.ylabel("Magnitude (dB)")
-    plt.title("SSB Spectrum (Only One Sideband)")
+    plt.title("SSB Spectrum: Upper vs Lower Sideband")
     plt.grid()
+    plt.legend()
     plt.show()
+
     
     # expand to band-limited
-    # x_i = xi_generate()
     # bandlimited sawtooth
-    f1 = 1e3        # hertz
+    f1 = 1e3    # hertz
     B = 6e3     # hertz
     x_i = np.zeros_like(t)
     max_harm = int(B / f1)
@@ -71,13 +85,10 @@ def p4():
     x_i *= 2 / np.pi  # normalization
     x_i *= -1
     
-    m = x_i   # or x_q, from your earlier work
+    m = x_i
     m_hat = np.imag(hilbert(m))
     
     x_ssb = m*c - m_hat*s
-    
-    # bandlimited triangle
-    max_harm = int(B / f1)
     
     # bandlimited triangle
     x_q = np.zeros_like(t)
