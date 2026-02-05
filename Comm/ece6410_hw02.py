@@ -9,8 +9,8 @@ import numpy as np
 from scipy.signal import hilbert
 
 def main():
-    # p1()
-    # p3()
+    p1()
+    p3()
     p4()
     pass
 
@@ -66,7 +66,7 @@ def p4():
     plt.xlim(6, 14)
     plt.xlabel("Frequency (kHz)")
     plt.ylabel("Magnitude (dB)")
-    plt.title("SSB Spectrum: Upper vs Lower Sideband")
+    plt.title("SSB Band-pass Signal (Frequency Domain)")
     plt.grid()
     plt.legend()
     plt.show()
@@ -109,7 +109,7 @@ def p4():
     plt.plot(t*1e3, x_q_ssb, label="SSB (triangle message)", alpha=0.8)
     plt.xlim(0, 0.5)
     plt.xlabel("Time (ms)")
-    plt.title("SSB Band-pass Signals (Sawtooth vs Triangle)")
+    plt.title("SSB Band-Limited Signals (Time Domain)")
     plt.grid()
     plt.legend()
     plt.show()
@@ -132,7 +132,7 @@ def p4():
     plt.xlim(8, 18)
     plt.xlabel("Frequency (kHz)")
     plt.ylabel("Magnitude (dB)")
-    plt.title("SSB Spectrum (Sawtooth vs Triangle Messages)")
+    plt.title("SSB Band-Limited Signals (Frequency Domain)")
     plt.grid()
     plt.legend()
     plt.show()
@@ -252,6 +252,7 @@ def p3():
     plt.plot(t*1e3, x_iq, label="I (Combined)")
     plt.xlim(0, time)
     plt.xlabel("Time (ms)")
+    plt.ylabel("Amplitude")
     plt.legend()
     plt.title("Bandlimited Baseband Signals")
     plt.grid()
@@ -259,7 +260,7 @@ def p3():
 
     # --- Q-channel: Triangle ---
     plt.figure(figsize=(10, 4))
-    plt.plot(t*1e3, x_q, color='blue')
+    plt.plot(t*1e3, x_q)
     plt.xlim(0, time)
     plt.xlabel("Time (ms)")
     plt.ylabel("Amplitude")

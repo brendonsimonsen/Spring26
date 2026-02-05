@@ -1,0 +1,17 @@
+Title:
+Constable: Improving Performance and Power Efficiency by Safely Eliminating Load Instruction Execution
+
+Authors:
+Rahul Bera; Adithya Ranganathan; Joydeep Rakshit; Sujit Mahto; Anant V. Nori; Jayesh Gaur
+
+Publication Venue:
+ISCA 2024 (ACM/IEEE International Symposium on Computer Architecture)
+
+Year:
+2024
+
+Direct Link:
+https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10609589
+
+The "Why":
+This paper is relevant to Advanced Computer Architecture because it introduces a new microarchitectural mechanism that reduces both performance bottlenecks and energy consumption caused by load instructions. From the provided abstract of the article, the authors "propose a purely-microarchitectural technique called Constable, that safely eliminates the execution of load instructions." This new technique aims to eliminate the execution of repeated load instructions by tracking changes to source registers and memory location then bypassing repeated load instructions. The authors claim this will free critical pipeline and memory resources. The authors argue that an "evaluation using a wide variety of 90 workloads shows that Constable improves performance by 5.1% while reducing the core dynamic power consumption by 3.4% on average." This article is from and ISCA conference in 2024 and it falls into the category of Energy Efficiency & Sustainability. 
