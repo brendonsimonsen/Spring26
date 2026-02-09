@@ -34,7 +34,7 @@ def p1():
     
     plt.figure()
     plt.plot(t*1000, m)
-    plt.xlim(0, 3)     # show 3 ms (about 3 periods of a 1 kHz wave)
+    plt.xlim(0, 1)     # show 3 ms (about 3 periods of a 1 kHz wave)
     plt.xlabel("Time (ms)")
     plt.ylabel("m(t)")
     plt.title("Normalized Band-limited 1 kHz square wave")
@@ -44,16 +44,26 @@ def p1():
     # create carrier signal
     c = np.cos(2*np.pi*fc*t)
     
+    # plot carrier
+    plt.figure()
+    plt.plot(t*1000, c)
+    plt.xlim(0, 1)     # show 3 ms (about 3 periods of a 1 kHz wave)
+    plt.xlabel("Time (ms)")
+    plt.ylabel("c(t)")
+    plt.title("Carrier Signal (fc = 20kHz)")
+    plt.grid()
+    plt.show()
+    
     # implement balanced modulator
     s = m * c
     
     # plot time domain
     plt.figure()
     plt.plot(t*1000, s)
-    plt.xlim(0, 2)   # zoom in (carrier is fast)
+    plt.xlim(0, 1)   # zoom in (carrier is fast)
     plt.xlabel("Time (ms)")
     plt.ylabel("s(t)")
-    plt.title("DSB-SC signal (Time-Domain)")
+    plt.title("Balanced Modulator Output {s(t) = m(t)*c(t)}")
     plt.grid()
     plt.show()
     
@@ -66,12 +76,23 @@ def p1():
     
     # plot in freqency domain
     plt.figure()
+    plt.plot(frequency/1000, s_freq)            # divide by N to normalize
+                                                # frequency/1000 easier plot
+    plt.xlim(-40, 40)                           # -40 to 40 kHz
+    plt.xlabel("Frequency (kHz)")
+    plt.ylabel("S(f)")
+    plt.title("DSB-SC Signal Spectrum")
+    plt.grid()
+    plt.show()
+    
+    # absolute value and normalized
+    plt.figure()
     plt.plot(frequency/1000, np.abs(s_freq)/N)  # divide by N to normalize
                                                 # frequency/1000 easier plot
-    plt.xlim(-40, 40)               # -40 to 40 kHz
+    plt.xlim(-40, 40)                           # -40 to 40 kHz
     plt.xlabel("Frequency (kHz)")
     plt.ylabel("|S(f)|")
-    plt.title("DSB-SC Signal Spectrum")
+    plt.title("DSB-SC Signal Spectrum (Normalized Magnitude)")
     plt.grid()
     plt.show()
     
