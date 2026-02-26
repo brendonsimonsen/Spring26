@@ -1,0 +1,14 @@
+LTspice 26.0.1 for Windows
+Circuit: C:\College\Spring26\Sensors\Project\6410_project_sim.net
+Start Time: Thu Feb 19 11:32:47 2026
+solver = Normal
+Maximum thread count: 16
+tnom = 27
+temp = 27
+method = trap
+Direct Newton iteration succeeded in finding operating point.
+Total elapsed time: 0.332 seconds.
+
+Files loaded:
+C:\College\Spring26\Sensors\Project\6410_project_sim.net
+
