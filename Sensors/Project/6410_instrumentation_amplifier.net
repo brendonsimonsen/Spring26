@@ -25,6 +25,24 @@ C4 NC_05 NC_06 {Cbp}
 C5 NC_07 NC_08 {Cbp}
 C6 NC_09 NC_10 {Cbp}
 C7 NC_11 NC_12 {Cbp}
+X§U4 N016 N014 V_pos V_nev N015 LT1793 ;§pnba In+)In-)V+)V-)OUT
+X§U5 N021 N019 V_pos V_nev N020 LT1793 ;§pnba In+)In-)V+)V-)OUT
+X§U6 N018 N012 V_pos V_nev N017 LT1793 ;§pnba In+)In-)V+)V-)OUT
+R12 N015 N014 {R1}
+R13 N014 N019 {Rg}
+R14 N019 N020 {R1}
+R15 N012 N015 {R2}
+R16 N013 N012 {R3}
+R17 N018 N020 {R2}
+R18 0 N018 {R3}
+V4 N016 N021 2.04
+C8 N013 N017 0.22µ
+C9 V_nev 0 {Cbp}
+C10 V_pos 0 {Cbp}
+C11 0 V_nev {Cbp}
+C12 V_nev 0 {Cbp}
+C13 0 V_pos {Cbp}
+C14 0 V_pos {Cbp}
 .param R1=10K
 .param R2=10k
 .param R3=10k
@@ -32,7 +50,7 @@ C7 NC_11 NC_12 {Cbp}
 .param Rg2=10k
 .param Cbp=4.7u
 .tran 0.1
-* Library below included based on ModelFile attribute of instance X§U1, X§U2, X§U3 (C:\Users\brend\AppData\Local\LTspice\lib\sym\OpAmps\LT1793.asy)
+* Library below included based on ModelFile attribute of instance X§U1, X§U2, X§U3, X§U4, X§U5, X§U6 (C:\Users\brend\AppData\Local\LTspice\lib\sym\OpAmps\LT1793.asy)
 .lib LTC.lib
 .backanno
 .end
