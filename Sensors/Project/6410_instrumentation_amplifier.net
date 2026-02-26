@@ -17,17 +17,11 @@ R9 Vb 0 8.85k
 R10 N003 Va 8.8k
 R11 Va 0 8.8k
 V5 N003 0 5V
-V3 N006 N011 2.04
+V3 N006 N011 2.22
 C2 N002 N007 0.22µ
-C1 NC_01 NC_02 {Cbp}
-C3 NC_03 NC_04 {Cbp}
-C4 NC_05 NC_06 {Cbp}
-C5 NC_07 NC_08 {Cbp}
-C6 NC_09 NC_10 {Cbp}
-C7 NC_11 NC_12 {Cbp}
-X§U4 N016 N014 V_pos V_nev N015 LT1793 ;§pnba In+)In-)V+)V-)OUT
-X§U5 N021 N019 V_pos V_nev N020 LT1793 ;§pnba In+)In-)V+)V-)OUT
-X§U6 N018 N012 V_pos V_nev N017 LT1793 ;§pnba In+)In-)V+)V-)OUT
+X§U4 N016 N014 V_pos_2 V_nev_2 N015 LT1793 ;§pnba In+)In-)V+)V-)OUT
+X§U5 N021 N019 V_pos_2 V_nev_2 N020 LT1793 ;§pnba In+)In-)V+)V-)OUT
+X§U6 N018 N012 V_pos_2 V_nev_2 N017 LT1793 ;§pnba In+)In-)V+)V-)OUT
 R12 N015 N014 {R1}
 R13 N014 N019 {Rg}
 R14 N019 N020 {R1}
@@ -35,14 +29,18 @@ R15 N012 N015 {R2}
 R16 N013 N012 {R3}
 R17 N018 N020 {R2}
 R18 0 N018 {R3}
-V4 N016 N021 2.04
+V4 N016 N021 2.22
 C8 N013 N017 0.22µ
-C9 V_nev 0 {Cbp}
-C10 V_pos 0 {Cbp}
-C11 0 V_nev {Cbp}
-C12 V_nev 0 {Cbp}
-C13 0 V_pos {Cbp}
-C14 0 V_pos {Cbp}
+C9 V_nev_2 0 {Cbp}
+C10 V_pos_2 0 {Cbp}
+C11 0 V_nev_2 {Cbp}
+C12 V_nev_2 0 {Cbp}
+C13 0 V_pos_2 {Cbp}
+C14 0 V_pos_2 {Cbp}
+C15 V_pos 0 {Cbp}
+C16 V_nev 0 {Cbp}
+V6 0 V_nev_2 5
+V7 V_pos_2 0 5
 .param R1=10K
 .param R2=10k
 .param R3=10k
